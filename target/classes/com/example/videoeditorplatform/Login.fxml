@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="456.0" prefWidth="977.0" spacing="20.0" style="-fx-background-color: FFFEFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.LoginController">
+<VBox alignment="CENTER" prefHeight="456.0" prefWidth="977.0" spacing="20.0" style="-fx-background-color: FFFEFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -25,7 +25,7 @@
                <Image url="@../../../Elements/male_user_50px.png" />
             </image>
          </ImageView>
-         <TextField fx:id="userLogin" promptText="Username">
+         <TextField promptText="Username">
             <font>
                <Font size="23.0" />
             </font>
@@ -39,14 +39,14 @@
                <Image url="@../../../Elements/lock_52px23.png" />
             </image>
          </ImageView>
-         <PasswordField fx:id="passLog" promptText="Password">
+         <PasswordField promptText="Password">
             <font>
                <Font size="23.0" />
             </font>
          </PasswordField>
      </items>
    </SplitPane>
-   <Button fx:id="logButton" mnemonicParsing="false" style="-fx-background-color: FF33F0;" text="Login" textFill="#fffdfe" textOverrun="CLIP" onAction="#HandleBtnLogin">
+   <Button mnemonicParsing="false" style="-fx-background-color: FF33F0;" text="Login" textFill="#fffdfe" textOverrun="CLIP">
       <font>
          <Font size="22.0" />
       </font>

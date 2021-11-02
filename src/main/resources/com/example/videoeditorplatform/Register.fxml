@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="456.0" prefWidth="977.0" spacing="20.0" style="-fx-background-color: FFFEFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.HelloController">
+<VBox alignment="CENTER" prefHeight="456.0" prefWidth="977.0" spacing="20.0" style="-fx-background-color: FFFEFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.RegisterController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <ImageView cache="true" cacheHint="SCALE" fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" smooth="false">
       <image>
-         <Image url="@../../../../../Elements/logoblack.png" />
+         <Image url="@../../../Elements/logoblack.png" />
       </image>
       <effect>
          <Reflection />
@@ -22,10 +22,10 @@
      <items>
          <ImageView fitHeight="150.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../../../Elements/male_user_50px.png" />
+               <Image url="@../../../Elements/male_user_50px.png" />
             </image>
          </ImageView>
-         <TextField promptText="Username">
+         <TextField fx:id="userReg" promptText="Username" >
             <font>
                <Font size="23.0" />
             </font>
@@ -36,10 +36,10 @@
      <items>
          <ImageView fitHeight="150.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../../../Elements/lock_52px23.png" />
+               <Image url="@../../../Elements/lock_52px23.png" />
             </image>
          </ImageView>
-         <PasswordField promptText="Password">
+         <PasswordField fx:id="passReg" promptText="Password">
             <font>
                <Font size="23.0" />
             </font>
@@ -50,22 +50,31 @@
       <items>
          <ImageView fitHeight="150.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../../../Elements/email_60px.png" />
+               <Image url="@../../../Elements/email_60px.png" />
             </image>
          </ImageView>
-         <TextField promptText="Email">
+         <TextField fx:id="emailReg" promptText="Email">
             <font>
                <Font size="23.0" />
             </font>
          </TextField>
       </items>
    </SplitPane>
-   <Button mnemonicParsing="false" style="-fx-background-color: FF33F0;" text="Register" textFill="#fffdfe" textOverrun="CLIP">
-      <font>
-         <Font size="22.0" />
-      </font>
-      <effect>
-         <Reflection fraction="0.0" topOpacity="0.0" />
-      </effect>
-   </Button>
+   <SplitPane dividerPositions="0.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="278.0">
+     <items>
+         <Button fx:id="regButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: FF33F0;" text="Register" textFill="#fffdfe" textOverrun="CLIP" onAction="#SignUpBTN">
+            <font>
+               <Font size="22.0" />
+            </font>
+         </Button>
+         <Button cancelButton="true" mnemonicParsing="false" style="-fx-background-color: FF33F0;" text="Cancel" textFill="#fffdfe" textOverrun="CLIP">
+            <font>
+               <Font size="22.0" />
+            </font>
+         </Button>
+     </items>
+      <VBox.margin>
+         <Insets left="350.0" right="370.0" />
+      </VBox.margin>
+   </SplitPane>
 </VBox>
