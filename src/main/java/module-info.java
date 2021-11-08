@@ -9,6 +9,7 @@ module com.example.videoeditorplatform {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens com.example.videoeditorplatform to javafx.fxml;
     exports com.example.videoeditorplatform;

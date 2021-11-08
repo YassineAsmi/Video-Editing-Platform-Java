@@ -42,7 +42,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.HomeTController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="159.0">
          <children>
@@ -58,7 +58,7 @@
                         <DropShadow radius="7.8025" spread="0.22" width="12.21" />
                      </effect>
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Home" textFill="WHITE">
+                        <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="7.0" onAction="#OnClickHome" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Home" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
                            </font>

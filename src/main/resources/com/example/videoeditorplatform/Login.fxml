@@ -8,9 +8,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.LoginController">
    <children>
       <ImageView cache="true" cacheHint="SCALE" fitHeight="150.0" fitWidth="600.0" layoutX="231.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
@@ -20,7 +20,7 @@
             <Reflection />
          </effect>
       </ImageView>
-      <TextField fx:id="userLogin" layoutX="134.0" layoutY="164.0" prefHeight="50.0" prefWidth="345.0" promptText="Username">
+      <TextField fx:id="UserLogin" layoutX="134.0" layoutY="164.0" prefHeight="50.0" prefWidth="345.0" promptText="Username">
          <font>
             <Font size="23.0" />
          </font>
@@ -56,5 +56,10 @@
             <Font size="23.0" />
          </font>
       </PasswordField>
+      <Text fx:id="msg" layoutX="141.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="337.13671875">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

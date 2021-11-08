@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="816.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="816.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.RegisterController">
    <children>
       <ImageView cache="true" cacheHint="SCALE" fitHeight="150.0" fitWidth="600.0" layoutX="336.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
@@ -46,7 +46,7 @@
             <Font size="23.0" />
          </font>
       </TextField>
-      <Button fx:id="regButton" alignment="CENTER" layoutX="200.0" layoutY="464.0" mnemonicParsing="false" onAction="#SignUpBTN" style="-fx-background-color: ed008c;" text="Register" textFill="#fffdfe" textOverrun="CLIP">
+      <Button fx:id="regButton" alignment="CENTER" layoutX="200.0" layoutY="464.0"  mnemonicParsing="false" onAction="#SignUpBTN" style="-fx-background-color: ed008c;" text="Register" textFill="#fffdfe" textOverrun="CLIP" >
          <font>
             <Font size="22.0" />
          </font>
