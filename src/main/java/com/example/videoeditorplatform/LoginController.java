@@ -4,12 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,17 +28,21 @@ public class LoginController {
     private Button logButton;
 @FXML
     private Text msg;
-    public void HandleBtnLogin(ActionEvent actionEvent) {
+@FXML
+    private AnchorPane rootpane;
+    public void HandleBtnLogin(ActionEvent actionEvent) throws IOException {
         if (UserLogin.getText().isBlank() ==false && passLog.getText().isBlank()==false)
         {
-        ValidateLogin();
-
+        //ValidateLogin();
+        AnchorPane pane =FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
+        rootpane.getChildren().setAll(pane);
         }
         else{
             msg.setText("Please enter username and password");
         }
      //   Parent root = FXMLLoader.load(getClass().getResource(HomeTController));
     }
+/*
     public void ValidateLogin(){
         DataBaseConnection connectNow = new DataBaseConnection();
         Connection connectDB = connectNow.getConnection();
@@ -56,4 +63,6 @@ public class LoginController {
             e.getCause();
         }
     }
+
+ */
 }
