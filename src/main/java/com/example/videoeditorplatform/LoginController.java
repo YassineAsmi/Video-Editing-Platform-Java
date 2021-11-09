@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,19 +31,26 @@ public class LoginController {
     private Text msg;
 @FXML
     private AnchorPane rootpane;
+@FXML
+    private Button CancelBTN;
+
     public void HandleBtnLogin(ActionEvent actionEvent) throws IOException {
         if (UserLogin.getText().isBlank() ==false && passLog.getText().isBlank()==false)
         {
-        //ValidateLogin();
+        ValidateLogin();
         AnchorPane pane =FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
         rootpane.getChildren().setAll(pane);
         }
         else{
             msg.setText("Please enter username and password");
         }
-     //   Parent root = FXMLLoader.load(getClass().getResource(HomeTController));
     }
-/*
+
+    public void cancelbtn(ActionEvent actionEvent) {
+        Stage stage = (Stage) CancelBTN.getScene().getWindow();
+        stage.close();
+    }
+
     public void ValidateLogin(){
         DataBaseConnection connectNow = new DataBaseConnection();
         Connection connectDB = connectNow.getConnection();
@@ -64,5 +72,5 @@ public class LoginController {
         }
     }
 
- */
+
 }

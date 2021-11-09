@@ -39,7 +39,7 @@
             <Reflection fraction="0.0" topOpacity="0.0" />
          </effect>
       </Button>
-      <Button fx:id="logButton1" cancelButton="true" layoutX="334.0" layoutY="322.0" mnemonicParsing="false" onAction="#HandleBtnLogin" style="-fx-background-color: ed008c;" text="Cancel" textFill="#fffdfe" textOverrun="CLIP">
+      <Button fx:id="CancelBTN" cancelButton="true" layoutX="334.0" layoutY="322.0" mnemonicParsing="false" onAction="#cancelbtn" style="-fx-background-color: ed008c;" text="Cancel" textFill="#fffdfe" textOverrun="CLIP">
          <font>
             <Font size="22.0" />
          </font>
