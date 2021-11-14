@@ -54,7 +54,7 @@
                         <DropShadow radius="7.8025" spread="0.22" width="12.21" />
                      </effect>
                      <children>
-                        <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Home" textFill="WHITE" onAction="#OnClickHome">
+                        <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#OnClickHome" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Home" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
                            </font>
@@ -64,7 +64,7 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Button fx:id="notifButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="7.0" layoutY="250.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Notif Settings" textFill="WHITE" onAction="#OnNotifClick">
+                  <Button fx:id="notifButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="7.0" layoutY="250.0" mnemonicParsing="false" onAction="#OnNotifClick" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Notif Settings" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -72,7 +72,7 @@
                         <DropShadow />
                      </effect>
                   </Button>
-                  <Button fx:id="videoButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="6.0" layoutY="197.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Videos" textFill="WHITE" onAction="#OnVideoClick">
+                  <Button fx:id="videoButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="6.0" layoutY="197.0" mnemonicParsing="false" onAction="#OnVideoClick" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Videos" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>
@@ -80,7 +80,7 @@
                         <DropShadow />
                      </effect>
                   </Button>
-                  <Button fx:id="clientButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="143.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Clients" textFill="WHITE" onAction="#OnClientClick">
+                  <Button fx:id="clientButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="143.0" mnemonicParsing="false" onAction="#OnClientClick" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Clients" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>
@@ -88,7 +88,7 @@
                         <DropShadow />
                      </effect>
                   </Button>
-                  <Button fx:id="logoutButton" layoutX="49.0" layoutY="359.0" mnemonicParsing="false" style="-fx-background-color: #970981;" text="Logout" textFill="WHITE" onAction="#OnLogoutClick">
+                  <Button fx:id="logoutButton" layoutX="49.0" layoutY="359.0" mnemonicParsing="false" onAction="#OnLogoutClick" style="-fx-background-color: #970981;" text="Logout" textFill="WHITE">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -110,7 +110,7 @@
             <Image url="@../../../Elements/logoblack.png" />
          </image>
       </ImageView>
-      <Text layoutX="277.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="159.0">
+      <Text fx:id="welcome" layoutX="197.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="159.0">
          <font>
             <Font size="37.0" />
          </font>
