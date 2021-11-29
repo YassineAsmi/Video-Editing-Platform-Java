@@ -42,7 +42,7 @@ PreparedStatement pst = null;
         {
 
         ValidateLogin();
-            moveToRegisterScreen();
+
         //    FXMLLoader loader = FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
           /*  try {
                 Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -78,7 +78,7 @@ PreparedStatement pst = null;
             rs = pst.executeQuery();
             if (rs.next()) {
                 msg.setText("You Have successfully logged in!!");
-
+                moveToRegisterScreen();
             } else {
                 msg.setText("Login Failed");
             }
