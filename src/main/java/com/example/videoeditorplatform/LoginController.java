@@ -70,15 +70,22 @@ PreparedStatement pst = null;
     public void ValidateLogin() throws IOException {
       conn = DataBaseConnection.ConnectDB();
         //String verifyLogin = "Select * From users where username = ? and password = ?  ;";
-        String v = "Select * from users WHERE username = ? and password = ?;";
+        String v = "Select * from users WHERE username = ? and password = ? and privieliges=1 or privieliges=0 ;";
         try {
             pst = conn.prepareStatement(v);
             pst.setString(1, UserLogin.getText());
             pst.setString(2, passLog.getText());
             rs = pst.executeQuery();
             if (rs.next()) {
-                msg.setText("You Have successfully logged in!!");
-                moveToRegisterScreen();
+                boolean privl = rs.getBoolean("privieliges");
+                if(privl == true){
+                    msg.setText("You Have successfully logged in!!");
+                    AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
+                    rootpane.getChildren().setAll(pane);
+                }else {
+                    AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
+                    rootpane.getChildren().setAll(pane);
+                }
             } else {
                 msg.setText("Login Failed");
             }
@@ -87,13 +94,4 @@ PreparedStatement pst = null;
         }
     }
 
-    public void moveToRegisterScreen() throws IOException {
-        loadStage();
-    }
-
-    private void loadStage() throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
-        rootpane.getChildren().setAll(pane);
-
-    }
 }
