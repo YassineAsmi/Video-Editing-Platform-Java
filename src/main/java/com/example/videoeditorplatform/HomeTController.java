@@ -36,7 +36,7 @@ public class HomeTController {
     }
 
     public void OnClientClick(ActionEvent actionEvent) throws IOException {
-       AnchorPane pane = FXMLLoader.load(getClass().getResource("Client List.fxml"));
+       AnchorPane pane = FXMLLoader.load(getClass().getResource("ClientList.fxml"));
        rootpane2.getChildren().setAll(pane);
     }
 
