@@ -105,46 +105,25 @@
             </Pane>
          </children>
       </AnchorPane>
-      <ListView layoutX="159.0" layoutY="126.0" prefHeight="248.0" prefWidth="421.0" />
       <TextField layoutX="159.0" layoutY="68.0" prefHeight="15.0" prefWidth="129.0" promptText="Search" />
       <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="324.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Elements/add_48px.png" />
          </image>
       </ImageView>
-      <Button layoutX="324.0" layoutY="65.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
+      <Button fx:id="ADD" layoutX="324.0" layoutY="65.0" mnemonicParsing="false" onAction="#onClickAddBtn" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
       <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="288.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Elements/search_64px.png" />
          </image>
       </ImageView>
       <Button layoutX="288.0" layoutY="65.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
-      <Text layoutX="166.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="225.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomEtPrenom">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="400.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="529.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <AnchorPane layoutX="54.0" layoutY="30.0" prefHeight="303.0" prefWidth="469.0" style="-fx-background-color: EDADF3;" visible="false">
+      <AnchorPane fx:id="addpanel" layoutX="54.0" layoutY="30.0" prefHeight="303.0" prefWidth="469.0" style="-fx-background-color: EDADF3;" visible="false">
          <children>
-            <TextField layoutX="45.0" layoutY="37.0" promptText="Nom et Prenom" />
-            <TextArea layoutX="45.0" layoutY="69.0" prefHeight="75.0" prefWidth="193.0" promptText="Adresse" />
-            <TextField layoutX="45.0" layoutY="159.0" promptText="TEL" />
-            <Button layoutX="142.0" layoutY="243.0" mnemonicParsing="false" style="-fx-background-color: #970981;" text="Add" textFill="WHITE">
+            <TextField fx:id="nom" layoutX="45.0" layoutY="37.0" promptText="Nom et Prenom" />
+            <TextArea fx:id="address" layoutX="45.0" layoutY="69.0" prefHeight="75.0" prefWidth="193.0" promptText="Adresse" />
+            <TextField fx:id="tel" layoutX="45.0" layoutY="159.0" promptText="TEL" />
+            <Button layoutX="142.0" layoutY="243.0" mnemonicParsing="false" onAction="#onClickAdd" style="-fx-background-color: #970981;" text="Add" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -152,7 +131,7 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button cancelButton="true" layoutX="238.0" layoutY="243.0" mnemonicParsing="false" style="-fx-background-color: #970981;" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancelAdd" cancelButton="true" layoutX="238.0" layoutY="243.0" mnemonicParsing="false" onAction="#onClickCancelAdd" style="-fx-background-color: #970981;" text="Cancel" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -162,5 +141,13 @@
             </Button>
          </children>
       </AnchorPane>
+      <TableView fx:id="ClientsTable" layoutX="153.0" layoutY="110.0" prefHeight="276.0" prefWidth="414.0">
+        <columns>
+          <TableColumn fx:id="idTable" prefWidth="26.0" text="ID" />
+          <TableColumn fx:id="nomTable" prefWidth="143.0" text="Nom et prenom" />
+           <TableColumn fx:id="addressTable" prefWidth="144.0" text="Address " />
+           <TableColumn fx:id="telTable" prefWidth="100.0" text="Tel" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
