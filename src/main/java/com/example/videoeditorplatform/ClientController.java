@@ -2,6 +2,8 @@ package com.example.videoeditorplatform;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ClientController implements Initializable {
@@ -43,6 +46,8 @@ public class ClientController implements Initializable {
 
     ObservableList<ClientSearchModel> clientSearchModelObservableList = FXCollections.observableArrayList();
 
+    @FXML
+    private TextField searchInput;
 
     Connection conn = null;
     ResultSet rs = null;
@@ -109,15 +114,18 @@ public class ClientController implements Initializable {
             pst2.setString(3, tel.getText());
             pst2.executeUpdate();
             clear();
+            ClientsTable.refresh();
             refresh();
         }
     }
     public void refresh() throws SQLException {
+
         conn = DataBaseConnection.ConnectDB();
         String V = "Select idClient,NomPrenom,address,tel From clients ;";
         try {
             pst = conn.prepareStatement(V);
             ResultSet res = pst.executeQuery();
+            clientSearchModelObservableList.clear();
             while(res.next()){
                 int queryID = res.getInt("idClient");
                 String queryNomPrenom = res.getString("NomPrenom");
@@ -133,6 +141,31 @@ public class ClientController implements Initializable {
             //set all colomns in talble view
             ClientsTable.setItems(clientSearchModelObservableList);
 
+            FilteredList<ClientSearchModel> filteredData = new FilteredList<>(clientSearchModelObservableList,b ->true );
+            searchInput.textProperty().addListener((observable,oldValue,newValue) -> {
+                filteredData.setPredicate(clientSearchModel -> {
+                    //if no search value then display all record
+                    if(newValue.isEmpty() || newValue.isBlank() || newValue ==null){
+                        return true;
+                    }
+                    String searchKeyword = newValue.toLowerCase();
+                    if(clientSearchModel.getNomPrenom().toLowerCase().indexOf(searchKeyword) > -1){
+                        return true;
+                    }else if(clientSearchModel.getTel().toString().indexOf(searchKeyword) > -1){
+                        return true;
+                    }else if(clientSearchModel.getId().toString().indexOf(searchKeyword) > -1){
+                        return true;
+                    } else if(clientSearchModel.getAddress().toLowerCase().indexOf(searchKeyword) > -1){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                });
+            });
+            SortedList<ClientSearchModel> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(ClientsTable.comparatorProperty());
+            ClientsTable.setItems(sortedData);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -142,5 +175,10 @@ public class ClientController implements Initializable {
         nom.setText("");
         address.setText("");
         tel.setText("");
+    }
+
+    public void onClickRefresh(ActionEvent actionEvent) throws SQLException {
+
+        ClientsTable.refresh();
     }
 }
