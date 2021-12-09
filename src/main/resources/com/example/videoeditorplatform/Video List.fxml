@@ -32,13 +32,20 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootpane4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1283.0" style="-fx-background-color: #F0ECEC;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.VideoController">
+<AnchorPane fx:id="rootpane4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="717.0" style="-fx-background-color: #F0ECEC;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.VideoController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="159.0">
          <children>
@@ -105,46 +112,51 @@
             </Pane>
          </children>
       </AnchorPane>
-      <ListView layoutX="159.0" layoutY="126.0" prefHeight="248.0" prefWidth="1100.0" />
-      <TextField layoutX="159.0" layoutY="68.0" prefHeight="15.0" prefWidth="129.0" promptText="Search" />
-      <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="324.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="searchInput" layoutX="159.0" layoutY="59.0" prefHeight="15.0" prefWidth="129.0" promptText="Search" />
+      <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="307.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Elements/add_48px.png" />
          </image>
       </ImageView>
-      <Button layoutX="324.0" layoutY="65.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
-      <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="288.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="ADD" layoutX="307.0" layoutY="56.0" mnemonicParsing="false" onAction="#onClickAddBtn" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
+      <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="643.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Elements/search_64px.png" />
+            <Image url="@../../../Elements/refresh_60px.png" />
          </image>
       </ImageView>
-      <Button layoutX="288.0" layoutY="65.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
-      <Text layoutX="166.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="410.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomEtPrenom">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="589.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DateDeTravail">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="770.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Option">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <AnchorPane layoutX="54.0" layoutY="30.0" prefHeight="303.0" prefWidth="469.0" style="-fx-background-color: EDADF3;" visible="false">
+      <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="351.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Elements/edit_64px.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="EditBttn" layoutX="351.0" layoutY="56.0" mnemonicParsing="false" onAction="#onClickEditBtn" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
+      <Button layoutX="643.0" layoutY="57.0" mnemonicParsing="false" onAction="#onClickRefresh" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
+      <ImageView fitHeight="36.0" fitWidth="52.0" layoutX="396.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Elements/Delete_60px.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="RemoveBtn" layoutX="396.0" layoutY="56.0" mnemonicParsing="false" onAction="#onClickRemoveBtn" opacity="0.0" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #F0ECEC;" />
+      <TableView fx:id="VideosTable" layoutX="159.0" layoutY="100.0" prefHeight="270.0" prefWidth="520.0">
+         <columns>
+            <TableColumn fx:id="idVideoCol" prefWidth="26.0" text="ID" />
+            <TableColumn fx:id="nameVideoCol" prefWidth="143.0" text="Video Title" />
+            <TableColumn fx:id="dateCol" prefWidth="144.0" text="DeadLine " />
+            <TableColumn fx:id="songCol" prefWidth="100.0" text="Song" />
+            <TableColumn fx:id="statusCol" prefWidth="100.0" text="Status" />
+
+         </columns>
+      </TableView>
+      <AnchorPane fx:id="AddVideoPanel" layoutX="227.0" layoutY="93.0" prefHeight="303.0" prefWidth="469.0" visible="false">
          <children>
-            <TextField layoutX="45.0" layoutY="37.0" promptText="Nom et Prenom" />
-            <TextArea layoutX="45.0" layoutY="69.0" prefHeight="75.0" prefWidth="193.0" promptText="Adresse" />
-            <TextField layoutX="45.0" layoutY="159.0" promptText="TEL" />
-            <Button layoutX="142.0" layoutY="243.0" mnemonicParsing="false" style="-fx-background-color: #970981;" text="Add" textFill="WHITE">
+            <ImageView fitHeight="303.0" fitWidth="469.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../Elements/BG.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="AddNom" layoutX="142.0" layoutY="60.0" promptText="Video Name" />
+            <TextField fx:id="SongAdd" layoutX="142.0" layoutY="152.0" promptText="Song" />
+            <Button layoutX="100.0" layoutY="216.0" mnemonicParsing="false" onAction="#onClickAddVideo" style="-fx-background-color: #970981;" text="Add" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -152,7 +164,7 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button cancelButton="true" layoutX="238.0" layoutY="243.0" mnemonicParsing="false" style="-fx-background-color: #970981;" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancelEdit1" cancelButton="true" layoutX="281.0" layoutY="216.0" mnemonicParsing="false" onAction="#onClickCancelAdd" style="-fx-background-color: #970981;" text="Cancel" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -160,27 +172,51 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
+            <Text fill="WHITE" layoutX="147.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Video">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Text>
+            <TextField fx:id="DeadLineAdd" layoutX="142.0" layoutY="104.0" promptText="DeadLine" />
          </children>
       </AnchorPane>
-      <Text layoutX="224.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomDeTravail">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="903.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Musique">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="1089.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
-      <Text layoutX="1189.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Text>
+      <AnchorPane fx:id="EditVideoPanel" layoutX="217.0" layoutY="83.0" prefHeight="303.0" prefWidth="469.0" visible="false">
+         <children>
+            <ImageView fitHeight="303.0" fitWidth="469.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../Elements/BG.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="EditNom" layoutX="142.0" layoutY="60.0" promptText="Video Name" />
+            <TextField fx:id="EditSong" layoutX="142.0" layoutY="145.0" promptText="Song" />
+            <Button layoutX="99.0" layoutY="243.0" mnemonicParsing="false" onAction="#onClickEdit" style="-fx-background-color: #970981;" text="Edit" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelEdit" cancelButton="true" layoutX="284.0" layoutY="243.0" mnemonicParsing="false" onAction="#onClickCancelEdit" style="-fx-background-color: #970981;" text="Cancel" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="149.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Video">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Text>
+            <TextField fx:id="EditDD" layoutX="142.0" layoutY="105.0" promptText="DeadLine" />
+            <CheckBox fx:id="EditStatus" layoutX="181.0" layoutY="189.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Status" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

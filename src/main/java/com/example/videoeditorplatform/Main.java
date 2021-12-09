@@ -10,8 +10,8 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ClientList.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 540);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Video List.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Video Editor Platform");
         stage.fullScreenProperty();
         stage.sizeToScene() ;

@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +24,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ClientController implements Initializable {
+    @FXML
+    private  AnchorPane EditPanel;
     @FXML
     public AnchorPane rootpane5;
     @FXML
@@ -34,6 +37,12 @@ public class ClientController implements Initializable {
     @FXML
     public TextField tel;
     @FXML
+    public TextField EditNom;
+    @FXML
+    public TextArea AddressEdit;
+    @FXML
+    public TextField TelEdit;
+    @FXML
     private TableView<ClientSearchModel> ClientsTable;
     @FXML
     private TableColumn<ClientSearchModel,Integer> idCol;
@@ -44,6 +53,7 @@ public class ClientController implements Initializable {
     @FXML
     private TableColumn<ClientSearchModel,Integer> telCol;
 
+
     ObservableList<ClientSearchModel> clientSearchModelObservableList = FXCollections.observableArrayList();
 
     @FXML
@@ -53,7 +63,7 @@ public class ClientController implements Initializable {
     ResultSet rs = null;
     PreparedStatement pst = null;
     PreparedStatement pst2 = null;
-
+    int id = -1;
     public void initialize(URL url, ResourceBundle resource)  {
         try {
             refresh();
@@ -62,6 +72,7 @@ public class ClientController implements Initializable {
         }
 
     }
+
     public void onClickHome(ActionEvent actionEvent) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
         rootpane5.getChildren().setAll(pane);
@@ -116,6 +127,37 @@ public class ClientController implements Initializable {
             clear();
             ClientsTable.refresh();
             refresh();
+        }
+    }
+    public void editInfo() throws SQLException {
+        ClientSearchModel selected=ClientsTable.getSelectionModel().getSelectedItem();
+        int ID =selected.getId();
+        conn = DataBaseConnection.ConnectDB();
+        try {
+            String v2 = "UPDATE Clients SET NomPrenom=?, address=?, tel=? where idClient=?;";
+            pst2 = conn.prepareStatement(v2);
+            pst2.setString(1, EditNom.getText());
+            pst2.setString(2, AddressEdit.getText());
+            pst2.setString(3, TelEdit.getText());
+            pst2.setInt(4, ID);
+            pst2.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public void DeleteInfo() throws SQLException {
+        ClientSearchModel selected=ClientsTable.getSelectionModel().getSelectedItem();
+        int ID =selected.getId();
+        conn = DataBaseConnection.ConnectDB();
+        try {
+            String v2 = "DELETE FROM Clients where idClient=?;;";
+            pst2 = conn.prepareStatement(v2);
+            pst2.setInt(1, ID);
+            pst2.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
         }
     }
     public void refresh() throws SQLException {
@@ -180,5 +222,56 @@ public class ClientController implements Initializable {
     public void onClickRefresh(ActionEvent actionEvent) throws SQLException {
 
         ClientsTable.refresh();
+    }
+
+    public void onClickEditBtn(ActionEvent actionEvent) throws SQLException {
+        EditPanel.setVisible(true);
+        ClientSearchModel selected=ClientsTable.getSelectionModel().getSelectedItem();
+        int ID =selected.getId();
+        if(selected !=null){
+            conn = DataBaseConnection.ConnectDB();
+
+                String v2 = "Select NomPrenom,address,tel From clients where idClient =?;";
+                pst2 = conn.prepareStatement(v2);
+                pst2.setInt(1, ID);
+                ResultSet rs = pst2.executeQuery();
+                if(rs.next()){
+                    String queryNomPrenom = rs.getString("NomPrenom");
+                    String queryAddress = rs.getString("address");
+                    int queryTel = rs.getInt("tel");
+                    EditNom.setText(queryNomPrenom);
+                    AddressEdit.setText(queryAddress);
+                    TelEdit.setText(String.valueOf(queryTel));
+                }
+            editInfo();
+        }
+        else {
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setContentText("Please Select an item");
+            a.show();
+        }
+
+
+
+    }
+
+    public void onClickRemoveBtn(ActionEvent actionEvent) throws SQLException {
+    DeleteInfo();
+    refresh();
+    }
+
+    public void onClickCancelEdit(ActionEvent actionEvent) {
+        EditPanel.setVisible(false);
+        clear();
+    }
+
+    public void onClickEdit(ActionEvent actionEvent) throws SQLException {
+        editInfo();
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle("Success");
+        a.setContentText("Client Inserted Succefully");
+        a.show();
+        refresh();
+        EditPanel.setVisible(false);
     }
 }
