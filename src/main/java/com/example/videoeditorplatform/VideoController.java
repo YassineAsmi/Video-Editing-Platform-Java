@@ -46,6 +46,8 @@ public class VideoController implements Initializable {
     @FXML
     private TableColumn<VideoSearchModel,Integer> idVideoCol;
     @FXML
+    private TableColumn<VideoSearchModel,String> NP;
+    @FXML
     private TableColumn<VideoSearchModel,String> nameVideoCol;
     @FXML
     private TableColumn<VideoSearchModel,String> dateCol;
@@ -55,6 +57,11 @@ public class VideoController implements Initializable {
     private TableColumn<VideoSearchModel,Boolean> statusCol;
     @FXML
     private AnchorPane EditVideoPanel;
+    @FXML
+    private ChoiceBox<String> ClientNameAdd;
+
+    private String queryNomPrenom;
+    ObservableList list=FXCollections.observableArrayList();
     ObservableList<VideoSearchModel> videoSearchModelObservableList = FXCollections.observableArrayList();
     Connection conn = null;
     ResultSet rs = null;
@@ -138,11 +145,11 @@ public class VideoController implements Initializable {
             pst2.setInt(1, ID);
             ResultSet rs = pst2.executeQuery();
             if(rs.next()){
-                String queryNomPrenom = rs.getString("nomVideo");
+                String querynomVideoom = rs.getString("nomVideo");
                 String queryDeadline = rs.getString("dateTravail");
                 String querySong = rs.getString("Musique");
                 Boolean queryStatus = rs.getBoolean("Status");
-                EditNom.setText(queryNomPrenom);
+                EditNom.setText(querynomVideoom);
                 EditDD.setText(queryDeadline);
                 EditSong.setText(querySong);
                 EditStatus.setSelected(queryStatus);
@@ -188,41 +195,65 @@ public class VideoController implements Initializable {
 
 
 
-    public void onClickAddBtn(ActionEvent actionEvent) {
+    public void onClickAddBtn(ActionEvent actionEvent) throws SQLException {
         AddVideoPanel.setVisible(true);
+            conn = DataBaseConnection.ConnectDB();
+
+            String v2 = "Select NomPrenom From clients;";
+            pst2 = conn.prepareStatement(v2);
+            ResultSet rs = pst2.executeQuery();
+            list.removeAll(list);
+            while (rs.next()){
+                queryNomPrenom = rs.getString("NomPrenom");
+                list.addAll(queryNomPrenom);
+
+            }
+        ClientNameAdd.getItems().addAll(list);
+        ClientNameAdd.setValue(queryNomPrenom);
     }
 
     public void onClickAddVideo(ActionEvent actionEvent) throws SQLException {
         conn = DataBaseConnection.ConnectDB();
-        String v2 = "INSERT INTO videos(nomVideo,dateTravail,Musique) values (?,?,?)";
-        pst2 = conn.prepareStatement(v2);
+        String v2 = "Select idClient From clients where NomPrenom=?;";
+        pst = conn.prepareStatement(v2);
+        pst.setString(1, ClientNameAdd.getValue());
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+        int  queryID = rs.getInt("idClient");
+        String v3 = "INSERT INTO videos(nomVideo,dateTravail,Musique,idClient) values (?,?,?,?)";
+        pst2 = conn.prepareStatement(v3);
         pst2.setString(1, AddNom.getText());
         pst2.setString(2, DeadLineAdd.getText());
         pst2.setString(3, SongAdd.getText());
+        pst2.setInt(4, queryID);
         pst2.execute();
         //   clear();
         //     ClientsTable.refresh();
-            refresh();
+        refresh();
+         }
         AddVideoPanel.setVisible(false);
     }
     public void refresh() throws SQLException {
 
         conn = DataBaseConnection.ConnectDB();
-        String V = "Select idVideo,nomVideo,dateTravail,Musique,Status From videos ;";
+        String V = "Select idVideo,NomPrenom,nomVideo,dateTravail,Musique,Status From videos,clients where clients.idClient=videos.idClient ;";
         try {
             pst = conn.prepareStatement(V);
             ResultSet res = pst.executeQuery();
             videoSearchModelObservableList.clear();
+
             while(res.next()){
                 int queryID = res.getInt("idVideo");
+                String queryNP = res.getString("NomPrenom");
                 String queryNomVideo = res.getString("nomVideo");
                 String querydatetravail = res.getString("dateTravail");
                 String queryMusique = res.getString("Musique");
                 Boolean querystatus = res.getBoolean("Status");
-                videoSearchModelObservableList.add(new VideoSearchModel(queryID,queryNomVideo,querydatetravail,queryMusique,querystatus) );
+                videoSearchModelObservableList.add(new VideoSearchModel(queryID,queryNP,queryNomVideo,querydatetravail,queryMusique,querystatus) );
             }
             // integrate values from to colomn
             idVideoCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+            NP.setCellValueFactory(new PropertyValueFactory<>("NP"));
             nameVideoCol.setCellValueFactory(new PropertyValueFactory<>("NameVideo"));
             dateCol.setCellValueFactory(new PropertyValueFactory<>("deadLine"));
             songCol.setCellValueFactory(new PropertyValueFactory<>("song"));
@@ -257,6 +288,5 @@ public class VideoController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
 }

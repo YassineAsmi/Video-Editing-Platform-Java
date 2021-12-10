@@ -34,6 +34,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -140,6 +141,7 @@
       <TableView fx:id="VideosTable" layoutX="159.0" layoutY="100.0" prefHeight="270.0" prefWidth="520.0">
          <columns>
             <TableColumn fx:id="idVideoCol" prefWidth="26.0" text="ID" />
+            <TableColumn fx:id="NP" prefWidth="143.0" text="Nom Prenom" />
             <TableColumn fx:id="nameVideoCol" prefWidth="143.0" text="Video Title" />
             <TableColumn fx:id="dateCol" prefWidth="144.0" text="DeadLine " />
             <TableColumn fx:id="songCol" prefWidth="100.0" text="Song" />
@@ -154,9 +156,9 @@
                   <Image url="@../../../Elements/BG.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="AddNom" layoutX="142.0" layoutY="60.0" promptText="Video Name" />
-            <TextField fx:id="SongAdd" layoutX="142.0" layoutY="152.0" promptText="Song" />
-            <Button layoutX="100.0" layoutY="216.0" mnemonicParsing="false" onAction="#onClickAddVideo" style="-fx-background-color: #970981;" text="Add" textFill="WHITE">
+            <TextField fx:id="AddNom" layoutX="142.0" layoutY="108.0" promptText="Video Name" />
+            <TextField fx:id="SongAdd" layoutX="142.0" layoutY="192.0" promptText="Song" />
+            <Button layoutX="92.0" layoutY="243.0" mnemonicParsing="false" onAction="#onClickAddVideo" style="-fx-background-color: #970981;" text="Add" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -164,7 +166,7 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="cancelEdit1" cancelButton="true" layoutX="281.0" layoutY="216.0" mnemonicParsing="false" onAction="#onClickCancelAdd" style="-fx-background-color: #970981;" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancelEdit1" cancelButton="true" layoutX="285.0" layoutY="243.0" mnemonicParsing="false" onAction="#onClickCancelAdd" style="-fx-background-color: #970981;" text="Cancel" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -177,7 +179,8 @@
                   <Font name="System Bold" size="28.0" />
                </font>
             </Text>
-            <TextField fx:id="DeadLineAdd" layoutX="142.0" layoutY="104.0" promptText="DeadLine" />
+            <TextField fx:id="DeadLineAdd" layoutX="142.0" layoutY="152.0" promptText="DeadLine" />
+            <ChoiceBox fx:id="ClientNameAdd" layoutX="142.0" layoutY="62.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="EditVideoPanel" layoutX="217.0" layoutY="83.0" prefHeight="303.0" prefWidth="469.0" visible="false">
