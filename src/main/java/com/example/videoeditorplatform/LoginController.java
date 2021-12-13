@@ -33,6 +33,7 @@ public class LoginController {
 @FXML
     private Button CancelBTN;
 
+public int idUser;
 NotifController notifController;
 Connection conn = null;
 ResultSet rs = null;
@@ -44,25 +45,14 @@ PreparedStatement pst = null;
 
         ValidateLogin();
 
-        //    FXMLLoader loader = FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
-          /*  try {
-                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-
-                Scene scene = new Scene(root);
-
-
-            }catch (Exception e){
-                System.out.println("mamchetch o93od zezwa");
-            }*/
-            //   HomeTController homeT = loader.getController();
-      //      homeT.WelcomeMSG(UserLogin.getText());
-
         }
         else{
             msg.setText("Please enter username and password");
         }
     }
-
+public int getUserId(){
+return idUser;
+}
     public void cancelbtn(ActionEvent actionEvent) {
         Stage stage = (Stage) CancelBTN.getScene().getWindow();
         stage.close();
@@ -78,6 +68,7 @@ PreparedStatement pst = null;
             rs = pst.executeQuery();
             if (rs.next()) {
                 boolean privl = rs.getBoolean("privieliges");
+                idUser =rs.getInt("id");
                 if (privl == true) {
                     msg.setText("You Have successfully logged in!!");
                     AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));

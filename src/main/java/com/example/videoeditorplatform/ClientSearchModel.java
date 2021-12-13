@@ -17,28 +17,28 @@ public class ClientSearchModel {
         return id;
     }
 
-    public String getNomPrenom() {
-        return NomPrenom;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public Integer getTel() {
-        return tel;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNomPrenom() {
+        return NomPrenom;
     }
 
     public void setNomPrenom(String nomPrenom) {
         NomPrenom = nomPrenom;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Integer getTel() {
+        return tel;
     }
 
     public void setTel(Integer tel) {

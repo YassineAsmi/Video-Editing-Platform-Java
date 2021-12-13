@@ -225,10 +225,11 @@ public class ClientController implements Initializable {
     }
 
     public void onClickEditBtn(ActionEvent actionEvent) throws SQLException {
-        EditPanel.setVisible(true);
+
         ClientSearchModel selected=ClientsTable.getSelectionModel().getSelectedItem();
         int ID =selected.getId();
         if(selected !=null){
+            EditPanel.setVisible(true);
             conn = DataBaseConnection.ConnectDB();
 
                 String v2 = "Select NomPrenom,address,tel From clients where idClient =?;";

@@ -199,7 +199,6 @@ public class VideoController implements Initializable {
     public void onClickAddBtn(ActionEvent actionEvent) throws SQLException {
         AddVideoPanel.setVisible(true);
             conn = DataBaseConnection.ConnectDB();
-
             String v2 = "Select NomPrenom From clients;";
             pst2 = conn.prepareStatement(v2);
             ResultSet rs = pst2.executeQuery();
@@ -207,7 +206,6 @@ public class VideoController implements Initializable {
             while (rs.next()){
                 queryNomPrenom = rs.getString("NomPrenom");
                 list.addAll(queryNomPrenom);
-
             }
         ClientNameAdd.getItems().addAll(list);
         ClientNameAdd.setValue(queryNomPrenom);
