@@ -38,7 +38,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.HomeAController">
+<AnchorPane fx:id="rootpane3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoeditorplatform.HomeAController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="159.0">
          <children>
@@ -54,7 +54,7 @@
                         <DropShadow radius="7.8025" spread="0.22" width="12.21" />
                      </effect>
                      <children>
-                        <Button fx:id="homeButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Home" textFill="WHITE" onAction="#onClickHome">
+                        <Button fx:id="homeButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#onClickHome" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Home" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
                            </font>
@@ -64,7 +64,7 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Button fx:id="notifButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="7.0" layoutY="250.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Notif Settings" textFill="WHITE" onAction="#onClickNotif">
+                  <Button fx:id="notifButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="7.0" layoutY="250.0" mnemonicParsing="false" onAction="#onClickNotif" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Notif Settings" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -72,7 +72,7 @@
                         <DropShadow />
                      </effect>
                   </Button>
-                  <Button fx:id="videoButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="6.0" layoutY="197.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Videos" textFill="WHITE" onAction="#onClickVideos">
+                  <Button fx:id="videoButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="6.0" layoutY="197.0" mnemonicParsing="false" onAction="#onClickVideos" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Videos" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>
@@ -80,7 +80,7 @@
                         <DropShadow />
                      </effect>
                   </Button>
-                  <Button fx:id="clientButtonC" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="143.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Clients" textFill="WHITE" onAction="#onClickClients">
+                  <Button fx:id="clientButtonC" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="8.0" layoutY="143.0" mnemonicParsing="false" onAction="#onClickClients" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Clients" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>
@@ -88,7 +88,7 @@
                         <DropShadow />
                      </effect>
                   </Button>
-                  <Button fx:id="logoutButtonA" layoutX="49.0" layoutY="359.0" mnemonicParsing="false" style="-fx-background-color: #970981;" text="Logout" textFill="WHITE" onAction="#onClickLogout">
+                  <Button fx:id="logoutButtonA" layoutX="49.0" layoutY="359.0" mnemonicParsing="false" onAction="#onClickLogout" style="-fx-background-color: #970981;" text="Logout" textFill="WHITE">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -101,7 +101,7 @@
                         <Image url="@../../../Elements/shutdown_128px.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="createButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="7.0" layoutY="318.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Create Account" textFill="WHITE" onAction="#onClickCreateAccount">
+                  <Button fx:id="createButtonA" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="7.0" layoutY="318.0" mnemonicParsing="false" onAction="#onClickCreateAccount" prefHeight="27.0" prefWidth="113.0" style="-fx-background-color: #970981;" text="Create Account" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="12.0" />
                      </font>

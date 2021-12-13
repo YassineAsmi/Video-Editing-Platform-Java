@@ -26,7 +26,7 @@ public class HomeTController {
     }
 
     public void OnNotifClick(ActionEvent actionEvent) throws IOException {
-       AnchorPane pane = FXMLLoader.load(getClass().getResource("notif.fxml"));
+       AnchorPane pane = FXMLLoader.load(getClass().getResource("Notif.fxml"));
        rootpane2.getChildren().setAll(pane);
     }
 
@@ -39,6 +39,7 @@ public class HomeTController {
        AnchorPane pane = FXMLLoader.load(getClass().getResource("ClientList.fxml"));
        rootpane2.getChildren().setAll(pane);
     }
+
 
     public void OnLogoutClick(ActionEvent actionEvent) throws IOException {
        AnchorPane pane = FXMLLoader.load(getClass().getResource("Login.fxml"));

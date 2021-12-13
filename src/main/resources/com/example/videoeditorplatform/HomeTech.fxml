@@ -110,7 +110,7 @@
             <Image url="@../../../Elements/logoblack.png" />
          </image>
       </ImageView>
-      <Text fx:id="welcome" layoutX="197.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="159.0">
+      <Text fx:id="welcome" layoutX="277.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="159.0">
          <font>
             <Font size="37.0" />
          </font>

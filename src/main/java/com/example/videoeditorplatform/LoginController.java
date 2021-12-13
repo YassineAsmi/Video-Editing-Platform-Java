@@ -33,6 +33,7 @@ public class LoginController {
 @FXML
     private Button CancelBTN;
 
+NotifController notifController;
 Connection conn = null;
 ResultSet rs = null;
 PreparedStatement pst = null;
@@ -69,26 +70,31 @@ PreparedStatement pst = null;
 
     public void ValidateLogin() throws IOException {
       conn = DataBaseConnection.ConnectDB();
-        //String verifyLogin = "Select * From users where username = ? and password = ?  ;";
-        String v = "Select * from users WHERE username = ? and password = ? and privieliges=1 or privieliges=0 ;";
+        String verifyLogin = "Select * From users where username = ? and password = ? ;";
         try {
-            pst = conn.prepareStatement(v);
+            pst = conn.prepareStatement(verifyLogin);
             pst.setString(1, UserLogin.getText());
             pst.setString(2, passLog.getText());
             rs = pst.executeQuery();
             if (rs.next()) {
                 boolean privl = rs.getBoolean("privieliges");
-                if(privl == true){
+                if (privl == true) {
                     msg.setText("You Have successfully logged in!!");
                     AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
                     rootpane.getChildren().setAll(pane);
-                }else {
+                    notifController.DoNotification();
+                } else {
                     AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
                     rootpane.getChildren().setAll(pane);
                 }
-            } else {
-                msg.setText("Login Failed");
             }
+            else {
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setContentText("Login Failed ");
+                a.show();
+                }
+
+
         } catch (SQLException throwables) {
             msg.setText("ERROR");
         }

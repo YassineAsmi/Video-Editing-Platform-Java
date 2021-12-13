@@ -29,7 +29,7 @@ public class ClientController implements Initializable {
     @FXML
     public AnchorPane rootpane5;
     @FXML
-    public AnchorPane addpanel;
+    public AnchorPane addpanelClient;
     @FXML
     public TextField nom;
     @FXML
@@ -84,7 +84,7 @@ public class ClientController implements Initializable {
     }
 
     public void onClickNotif(ActionEvent actionEvent) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("notif.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Notif.fxml"));
         rootpane5.getChildren().setAll(pane);
     }
 
@@ -99,7 +99,7 @@ public class ClientController implements Initializable {
     }
 
     public void onClickAddBtn(ActionEvent actionEvent) {
-        addpanel.setVisible(true);
+        addpanelClient.setVisible(true);
     }
 
     public void onClickCancelAdd(ActionEvent actionEvent) {
@@ -213,7 +213,7 @@ public class ClientController implements Initializable {
         }
     }
     public void clear(){
-        addpanel.setVisible(false);
+        addpanelClient.setVisible(false);
         nom.setText("");
         address.setText("");
         tel.setText("");

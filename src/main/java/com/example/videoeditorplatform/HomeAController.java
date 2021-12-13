@@ -17,7 +17,7 @@ public class HomeAController {
 
     public void onClickNotif(ActionEvent actionEvent) throws IOException {
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("notif.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Notif.fxml"));
         rootpane3.getChildren().setAll(pane);
     }
 

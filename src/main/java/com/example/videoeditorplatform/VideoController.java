@@ -92,7 +92,7 @@ public class VideoController implements Initializable {
     }
 
     public void onClickNotif(ActionEvent actionEvent) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("notif.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Notif.fxml"));
         rootpane4.getChildren().setAll(pane);
     }
 
@@ -134,10 +134,11 @@ public class VideoController implements Initializable {
     }
     public void onClickEditBtn(ActionEvent actionEvent) throws SQLException {
 
-        EditVideoPanel.setVisible(true);
+
         VideoSearchModel selected=VideosTable.getSelectionModel().getSelectedItem();
         int ID =selected.getId();
         if(selected !=null){
+            EditVideoPanel.setVisible(true);
             conn = DataBaseConnection.ConnectDB();
 
             String v2 = "Select nomVideo,dateTravail,Musique,Status From videos where idVideo =?;";
