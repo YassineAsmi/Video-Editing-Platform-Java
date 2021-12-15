@@ -155,7 +155,7 @@ public class VideoController implements Initializable {
                 EditSong.setText(querySong);
                 EditStatus.setSelected(queryStatus);
             }
-            editInfoVideo();
+
         }
         else {
             Alert a = new Alert(Alert.AlertType.WARNING);
@@ -183,7 +183,7 @@ public class VideoController implements Initializable {
         editInfoVideo();
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setTitle("Success");
-        a.setContentText("Client Inserted Succefully");
+        a.setContentText("Video Modifiyed Succefully");
         a.show();
         refresh();
         EditVideoPanel.setVisible(false);
@@ -203,6 +203,7 @@ public class VideoController implements Initializable {
             pst2 = conn.prepareStatement(v2);
             ResultSet rs = pst2.executeQuery();
             list.removeAll(list);
+            ClientNameAdd.getItems().clear();
             while (rs.next()){
                 queryNomPrenom = rs.getString("NomPrenom");
                 list.addAll(queryNomPrenom);

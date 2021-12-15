@@ -73,7 +73,7 @@ return idUser;
                     msg.setText("You Have successfully logged in!!");
                     AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
                     rootpane.getChildren().setAll(pane);
-                    notifController.DoNotification();
+
                 } else {
                     AnchorPane pane = FXMLLoader.load(getClass().getResource("HomeTech.fxml"));
                     rootpane.getChildren().setAll(pane);

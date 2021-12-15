@@ -113,8 +113,9 @@ public class ClientController implements Initializable {
         pst.setString(1, tel.getText());
         rs = pst.executeQuery();
         if (rs.next()) {
-            Alert a = new Alert(Alert.AlertType.NONE);
-            // show the dialog
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setTitle("Success");
+            a.setContentText("Client Added Succefully");
             a.show();
         }
         else {
